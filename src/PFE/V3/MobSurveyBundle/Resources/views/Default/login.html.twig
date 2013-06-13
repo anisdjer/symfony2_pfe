@@ -1,0 +1,158 @@
+{% extends "MSBundle::base_layout.html.twig" %}
+{% block title %}
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/ms/css/demo.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/ms/css/style.css') }}" />
+{% endblock %}
+{% block style %}
+
+
+    <style>
+    .art-content .art-postcontent-0 .layout-item-0 { margin-bottom: 0px;border-radius: 40px;  }
+    .art-content .art-postcontent-0 .layout-item-1 { color: #404040; border-spacing: 10px 0px; border-collapse: separate;border-radius: 40px;  }
+    .art-content .art-postcontent-0 .layout-item-2 { border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-color:#A6A6A6;border-right-color:#A6A6A6;border-bottom-color:#A6A6A6;border-left-color:#A6A6A6; color: #292929; background: #C3D3E4; padding-right: 10px;padding-left: 10px;  border-radius: 40px;}
+    .art-content .art-postcontent-0 .layout-item-3 { border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-color:#A6A6A6;border-right-color:#A6A6A6;border-bottom-color:#A6A6A6;border-left-color:#A6A6A6; color: #292929; background: #C3D3E4; padding-right: 10px;padding-left: 10px; vertical-align: middle;border-radius: 40px;  }
+    .ie7 .post .layout-cell {border:none !important; padding:0 !important; }
+    .ie6 .post .layout-cell {border:none !important; padding:0 !important; }
+           </style>
+{% endblock %}
+{% block content %}
+    {% include "MSBundle:Includes:security_layout.html.twig" %}
+    {% block granted %}{% endblock %}
+    {% block messages %}{% endblock %}
+    {#{% block fos_user_content %}#}
+    {#{% if error %}#}
+    {#<div>{{ error|trans({}, 'FOSUserBundle') }}</div>#}
+    {#{% endif %}#}
+
+        {#<form action="{{ path("fos_user_security_check") }}" method="post">#}
+            {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />#}
+
+            {#<label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>#}
+            {#<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />#}
+
+            {#<label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>#}
+            {#<input type="password" id="password" name="_password" required="required" />#}
+
+            {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />#}
+            {#<label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>#}
+
+            {#<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />#}
+        {#</form>#}
+    {#{% endblock fos_user_content %}#}
+    {% block header %}{% endblock %}
+    {% block fos_user_content %}
+        {#{% if error %}#}
+        {#<div>{{ error|trans({}, 'FOSUserBundle') }}</div>#}
+        {#{% endif %}#}
+    {#<div class="art-postcontent art-postcontent-0 clearfix">#}
+        {#<div class="art-content-layout-wrapper layout-item-0">#}
+            {#<div class="art-content-layout layout-item-1">#}
+                {#<div class="art-content-layout-row">#}
+                    {#<div class="art-layout-cell layout-item-2" style="width: 40%" >#}
+                        {#<form action="{{ path("fos_user_security_check") }}" method="post">#}
+                            {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />#}
+                            {#<table class="art-article" style="border-radius: 20px">#}
+                                {#<tbody>#}
+                                    {#<tr><tdcolspan="5" style="text-align: center; width: 226px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br></td></tr>#}
+                                    {#<tr>#}
+                                    {#<td colspan="5" style="text-align: center; width: 226px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br>#}
+                                    {#<span style="color: rgb(226, 52, 29); font-size: 20px; font-weight: bold; font-family: Arial">Login (administrator, Survey leader)<br>#}
+                                    {#<br></span></td>#}
+                                    {#</tr>#}
+                                    {#<tr>#}
+                                    {#<td style="width: 111px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><span style="font-weight: bold; text-align: center;">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</span><br></td>#}
+                                    {#<td colspan="4" style="text-align: center; width: 226px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><input type="text" style="border-radius: 20px;margin-right: auto; margin-left: auto; width: 226px; background-repeat-x: no-repeat; background-repeat-y: no-repeat;text-align: center" id="username" name="_username" value="{{ last_username }}" required="required" /></td>#}
+                                    {#</tr>#}
+                                    {#<tr>#}
+                                    {#<td style="width: 111px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><span style="font-weight: bold; text-align: center;">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</span></td>#}
+                                    {#<td colspan="4" style="text-align: center; width: 226px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><input type="password" style="border-radius: 20px;text-align: center;margin-right: auto; margin-left: auto; width: 226px; background-repeat-x: no-repeat; background-repeat-y: no-repeat;"id="password" name="_password" required="required" /></td>#}
+                                    {#</tr>#}
+                                    {#<tr>#}
+                                    {#<td style="width: 111px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br></td>#}
+                                    {#<td colspan="3" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; width: 139px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><label class="art-checkbox"><input type="checkbox"id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label><br></td>#}
+                                    {#<td style="width: 76px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">&nbsp;<a href="" class="art-button"><input class="art-button" type="submit" id="_submit" style="border-radius: 20px;text-align: center;background: transparent; border: transparent" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" /></a>&nbsp;</td>#}
+                                    {#</tr>#}
+                                {#</tbody>#}
+                            {#</table>#}
+                        {#</form>#}
+                    {#</div>#}
+                    {#<div class="art-layout-cell layout-item-3" style="width: 60%" >#}
+                        {#<ul>#}
+                            {#<li><b>Admin</b>#}
+                                {#<p>#}
+                                    {#An Admin is the person who can create, modify or remove users accounts, including survey leaders'accounts.#}
+                                {#</p>#}
+                            {#</li>#}
+                            {#<li><b>Survey Leader</b>#}
+                                {#<p><progress style="width: 60%;height: 10px" ></progress> (under construction)</p>#}
+                            {#</li>#}
+                        {#</ul>#}
+    {#&#123;&#35;<table class="art-article" style="margin-right: auto; margin-left: auto; width: 90%;">&#35;&#125;#}
+    {#&#123;&#35;<tbody>&#35;&#125;#}
+    {#&#123;&#35;<tr>&#35;&#125;#}
+    {#&#123;&#35;<td style="width: 42%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br></td>&#35;&#125;#}
+    {#&#123;&#35;<td colspan="2" style="text-align: center; width: 58%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br>&#35;&#125;#}
+    {#&#123;&#35;<span style="color: rgb(226, 52, 29); font-size: 20px; font-weight: bold; font-family: Arial; text-decoration: underline;">Login as&nbsp;User<br>&#35;&#125;#}
+    {#&#123;&#35;<br></span></td>&#35;&#125;#}
+    {#&#123;&#35;</tr>&#35;&#125;#}
+    {#&#123;&#35;<tr>&#35;&#125;#}
+    {#&#123;&#35;<td style="width: 42%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><span style="font-weight: bold; text-align: center;">Username</span><br></td>&#35;&#125;#}
+    {#&#123;&#35;<td colspan="2" style="text-align: center; width: 58%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><input type="text"></td>&#35;&#125;#}
+    {#&#123;&#35;</tr>&#35;&#125;#}
+    {#&#123;&#35;<tr>&#35;&#125;#}
+    {#&#123;&#35;<td style="width: 42%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><span style="font-weight: bold; text-align: center;">Password</span></td>&#35;&#125;#}
+    {#&#123;&#35;<td colspan="2" style="text-align: center; width: 58%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><input type="password"></td>&#35;&#125;#}
+    {#&#123;&#35;</tr>&#35;&#125;#}
+    {#&#123;&#35;<tr>&#35;&#125;#}
+    {#&#123;&#35;<td style="width: 42%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br></td>&#35;&#125;#}
+    {#&#123;&#35;<td style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; width: 54%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><label class="art-checkbox"><input type="checkbox">Remember me</label><br></td>&#35;&#125;#}
+    {#&#123;&#35;<td style="width: 4%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">&nbsp;<a href="" class="art-button">Login</a>&nbsp;</td>&#35;&#125;#}
+    {#&#123;&#35;</tr>&#35;&#125;#}
+    {#&#123;&#35;</tbody>&#35;&#125;#}
+    {#&#123;&#35;</table>&#35;&#125;#}
+           {#&#123;&#35;&#35;&#125;#}
+    {#<br>#}
+
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+
+        <div class="container">
+
+            <section>
+                <div id="container_demo" >
+
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <form action="{{ path("fos_user_security_check") }}" method="post" autocomplete="on">
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                                <h1>Log in</h1>
+                                <p>
+                                    <label for="username" class="uname" data-icon="u" > Saisir username</label>
+                                    <input id="username" name="_username" required="required" value="{{ last_username }}" type="text" placeholder="monusername"/>
+                                </p>
+                                <p>
+                                    <label for="password" class="youpasswd" data-icon="p"> Saisir votre mot de passe </label>
+                                    <input id="password" name="_password" required="required" type="password" placeholder="eg. X8df!90EO" />
+                                </p>
+                                <p class="keeplogin">
+                                    <input type="checkbox" name="_remember_me" id="loginkeeping" value="on" />
+                                    <label for="loginkeeping">Souviens de moi !</label>
+                                </p>
+                                <p class="login button">
+                                    <input type="submit" value="Login" />
+                                </p>
+                            </form>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    {% endblock fos_user_content %}
+{% endblock %}

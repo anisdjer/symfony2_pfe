@@ -1,0 +1,28 @@
+ms_homepage:
+    pattern:  /
+    defaults: { _controller: MSBundle:Default:index }
+ms_login:
+    pattern:  /login
+    defaults: { _controller: MSBundle:Default:login }
+users:
+    type:     rest
+    prefix: /rest
+    resource: PFE\V3\MobSurveyBundle\Controller\Rest\UsersController
+enqueteurs:
+    type: rest
+    prefix: /rest
+    resource: PFE\V3\MobSurveyBundle\Controller\Rest\EnqueteursController
+superviseurs:
+    type: rest
+    prefix: /rest
+    resource: PFE\V3\MobSurveyBundle\Controller\Rest\SuperviseursController
+questionnaires:
+    type: rest
+    prefix: /rest
+    resource: PFE\V3\MobSurveyBundle\Controller\Rest\QuestionnairesController
+security:
+    resource : "@MSBundle/Controller/Rest"
+    type : annotation
+:*:
+    resource : "@MSBundle/Controller/"
+    type: annotation

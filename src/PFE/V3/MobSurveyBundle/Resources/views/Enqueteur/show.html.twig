@@ -1,0 +1,53 @@
+{% extends 'MSBundle:WebMasterDomain:accounts.html.twig' %}
+
+{% block content %}
+    <h1>Enqueteur</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr><tr>
+                <th>Password</th>
+                <td>{{ entity.password }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td><img src="{{ asset('uploads/ms/users/photos/'~entity.path)}}" width="50" height="50" /></td>
+            </tr>
+            <tr>
+                <th>Device_id</th>
+                <td>{{ entity.deviceid }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('users_enqueteur') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('users_enqueteur_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('users_enqueteur_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

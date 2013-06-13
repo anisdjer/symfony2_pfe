@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US"><head><!-- Created by Artisteer v4.0.0.58475 -->
+    <LINK REL="SHORTCUT ICON" href="{{ asset('bundles/ms/favicon.ico') }}">
+    <meta charset="utf-8">
+    {% block title %}
+        <title>Bienvenue !</title>
+    {% endblock %}
+    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
+
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!--<link rel="stylesheet" href="{{ asset('bundles/ms/css/style.css.twig') }}" media="screen"> -->
+    {% block stylesheets %}
+        {% include 'MSBundle::style.css.twig' %}
+    {% endblock %}
+    <!--[if lte IE 7]><link rel="stylesheet" href="{{ asset('bundles/ms/css/style.ie7.css')  }}" media="screen" /><![endif]-->
+    <link rel="stylesheet" href="{{ asset('bundles/ms/css/style.responsive.css') }}" media="all">
+
+
+    <script src="{{ asset('bundles/ms/js/jquery.js') }}"></script>
+    <script src="{{ asset('bundles/ms/js/script.js') }}"></script>
+    <script src="{{ asset('bundles/ms/js/script.responsive.js') }}"></script>
+
+
+    <style>
+        {% block style %}
+        .art-content .art-postcontent-0 .layout-item-0 { color: #DBDBDB; background: #333333; padding: 10px;  }
+        .art-content .art-postcontent-0 .layout-item-1 { color: #D4D4D4; background: #555555; padding: 10px;  }
+        .art-content .art-postcontent-0 .layout-item-2 { padding: 20px;  }
+        .ie7 .post .layout-cell {border:none !important; padding:0 !important; }
+        .ie6 .post .layout-cell {border:none !important; padding:0 !important; }
+        {% endblock %}
+    </style>
+</head>
+<body>
+<div id="art-main">
+    <nav class="art-nav clearfix">
+        <ul class="art-hmenu" >
+            {% block menu %}
+            <li>
+            {% if app.request.attributes.get('_route') == "ms_homepage" %}
+                <a href="{{ path('ms_homepage')}}" class="active">
+            {% else %}
+                    <a href="{{ path('ms_homepage')}}">
+            {% endif %}
+                        Accueil</a>
+            </li><li>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% if app.request.attributes.get('_route') in [ "campagne" , "campagne_new" , "campagne_edit" , "campagne_show"] %}
+                    <a href="{{ path('campagne')}}" class="active">
+                {% else %}
+                    <a href="{{ path('campagne')}}" >
+                {% endif %}
+                    campagnes</a>
+                        </li>
+            <li>
+                {% if app.request.attributes.get('_route') in [ "enquete" , "enquete_new" , "enquete_edit" , "enquete_show"] %}
+                    <a href="{{ path('enquete')}}" class="active">
+                {% else %}
+                    <a href="{{ path('enquete')}}" >
+                {% endif %}
+                    enquetes</a>
+                        </li>
+            <li>
+                {% if app.request.attributes.get('_route') in [ "equipe" , "equipe_new" , "equipe_edit" , "equipe_show"] %}
+                    <a href="{{ path('equipe')}}" class="active">
+                {% else %}
+                    <a href="{{ path('equipe')}}" >
+                {% endif %}
+                    equipes</a>
+                        </li>
+            <li>
+                {% if app.request.attributes.get('_route') in ["users_accounts","users_webmaster","users_webmaster_show","users_webmaster_edit","users_webmaster_new","users_chefenquete","users_chefenquete_show","users_chefenquete_edit","users_chefenquete_new","users_superviseur","users_superviseur_show","users_superviseur_edit","users_superviseur_new","users_enqueteur","users_enqueteur_show","users_enqueteur_edit","users_enqueteur_new", ] %}
+                <a href="{{ path('users_accounts')}}" class="active">
+                    {% else %}
+                    <a href="{{ path('users_accounts')}}" >
+                        {% endif %}
+                    accounts</a>
+                        </li>
+            <li>
+                {% if app.request.attributes.get('_route') == "fos_user_security_logout" %}
+                    <a href="{{ path('fos_user_security_logout')}}" class="active">
+                {% else %}
+                    <a href="{{ path('fos_user_security_logout')}}" >
+                {% endif %}
+                Logout ({{ app.user.username }})</a>
+
+            {% else %}
+                {% if app.request.attributes.get('_route') == "ms_login" %}
+                    <a href="{{ path('ms_login')}}" class="active">
+                {% else %}
+                    <a href="{{ path('ms_login')}}">
+                {% endif %}Log in</a>
+            {% endif %}
+            </li>
+
+        {% endblock %}
+        </ul>
+
+    </nav>
+    {% block header %}
+
+    {% endblock %}
+    <div class="art-sheet clearfix">
+        <div class="art-layout-wrapper clearfix">
+            <div class="art-content-layout">
+                <div class="art-content-layout-row">
+                    <div class="art-layout-cell art-content clearfix">
+                        <article class="art-post art-article">
+
+
+                        <div class="art-postcontent art-postcontent-0 clearfix">
+                            <div class="art-content-layout">
+                                {% block middlemenu %}
+                                {% endblock %}
+                        </div>
+                            {% block content %}
+                                <div class="art-content-layout-row">
+                                    <div class="art-layout-cell layout-item-2" style="width: 25%" >
+                                        <h1>Latest News</h1>
+                                        <h3>04/01/2011</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;Pellentesque ac felis tellus.&nbsp;Donec ut hendrerit enim.</p>
+                                        <hr style="border:none;background-color:#dedede;color:#dedede;height:1px;">
+                                        <h3>03/17/2011</h3>
+                                        <p>Etiam pharetra, tellus sit amet congue vulputate, nisi erat iaculis nibh, vitae feugiat sapien ante eget mauris.</p>
+                                        <hr style="border:none;background-color:#dedede;color:#dedede;height:1px;">
+                                        <h3>02/21/2011</h3>
+                                        <p>Cras elit nisl, rhoncus nec iaculis ultricies, feugiat eget sapien. Pellentesque ac felis tellus.</p>
+                                    </div><div class="art-layout-cell layout-item-2" style="width: 50%" >
+                                    <h1>Realizing the Potentials</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pharetra, tellus sit amet congue vulputate, nisi erat iaculis nibh.&nbsp;Cras elit nisl, rhoncus nec iaculis ultricies.Pellentesque ac felis tellus. Aenean sollicitudin imperdiet arcu.&nbsp;Duis placerat justo eu nunc interdum ultrices.&nbsp;</p>
+                                    <p><img width="449" height="218" alt="" src="{{ asset('bundles/ms/images/bizkit_img-2-2.jpg') }}" class=""></p>
+                                    <p>Pellentesque ac felis tellus. Aenean sollicitudin imperdiet arcu.&nbsp;Duis placerat justo eu nunc interdum ultrices. Phasellus elit dolor, porttitor id consectetur sit amet, posuere id magna.</p>
+                                </div><div class="art-layout-cell layout-item-2" style="width: 25%" >
+                                    <h1>Highlights</h1>
+                                    <ul>
+                                        <li>Lorem ipsum dolor sit amet</li>
+                                        <li>Consectetur adipiscing elit</li>
+                                        <li>Etiam pharetra tellus sit</li>
+                                        <li>Amet congue vulputate</li>
+                                        <li>Nisi erat iaculis cras elit nisl</li>
+                                        <li>Rhoncus nec iaculis ultricies</li>
+                                        <li>Pellentesque ac felis tellus</li>
+                                        <li>Aenean sollicitudin</li>
+                                        <li>Arcu duis placerat justo</li>
+                                        <li>Interdum ultrices phasellus</li>
+                                        <li>Elit dolor consectetur</li>
+                                        <li>Sit amet, posuere id magna</li>
+                                        <li>Duis placerat justo eu nunc</li>
+                                        <li>Interdum ultrices phasellus</li>
+                                    </ul>
+                                </div>
+                                </div>
+                        </div>
+                         {% endblock %}
+                    </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% block footer %}
+        <footer class="art-footer clearfix">
+        <div class="art-content-layout">
+            <div class="art-content-layout-row">
+                <div class="art-layout-cell layout-item-0" style="width: 24%">
+                    <p style="font: 18px 'Trebuchet MS'; color: #808080;">Information</p>
+                    <br>
+                    <ul>
+                        <li><a href="#">Welcome</a></li>
+                        <li><a href="#">Organization</a></li>
+                        <li><a href="#">Schedule</a></li>
+                        <li><a href="#">People</a></li>
+                        <li><a href="#">Management</a></li>
+                    </ul>
+                </div><div class="art-layout-cell layout-item-0" style="width: 24%">
+                <p style="font: 18px 'Trebuchet MS'; color: #808080;">Location</p>
+                <br>
+                <ul>
+                    <li><a href="#">Area Map</a></li>
+                    <li><a href="#">Address</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div><div class="art-layout-cell layout-item-0" style="width: 22%">
+                <p style="font: 18px 'Trebuchet MS'; color: #808080;">Company</p>
+                <br>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div><div class="art-layout-cell layout-item-0" style="width: 30%">
+                <br>
+                <p style="text-align: right;">Copyright © 2012-2013.<br> All Rights Reserved.</p>
+            </div>
+            </div>
+        </div>
+
+    </footer>
+    {% endblock %}
+    </div>
+    {% block copyright %}
+    <p class="art-page-footer">
+        <span id="art-footnote-links">Web Template proudly realised by <a href="http://bouhachem.co.nf/" target="_blank">Anis BOUHACHEM.</a></span>
+    </p>
+    {% endblock %}
+</div>
+
+
+</body>
+</html>

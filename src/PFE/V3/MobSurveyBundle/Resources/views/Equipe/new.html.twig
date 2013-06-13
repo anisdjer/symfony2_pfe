@@ -1,0 +1,53 @@
+{#{% extends 'MSBundle:Enquete:index.html.twig' %}#}
+
+{#{% block style %}#}
+
+    {#{{ parent() }}#}
+    {#<style>#}
+        {#input#}
+        {#{#}
+            {#border-radius: 20px;#}
+            {#text-align: center;#}
+        {#}#}
+        {#tr , td, th{#}
+            {#border: hidden;#}
+            {#text-align: left;#}
+        {#}#}
+    {#</style>#}
+    {#<script type="text/javascript" src="{{ asset('bundles/ms/js/new_enquete.js') }}"></script>#}
+{#{% endblock %}#}
+{#{% block content %}#}
+    {#<h1>Sup</h1>#}
+    {#<ul>#}
+    {#{% for sup in superviseurs %}#}
+        {#<li>{{ sup }}</li>#}
+    {#{% endfor %}#}
+    {#</ul>#}
+
+    {#<h1>Enq</h1>#}
+    {#<ul>#}
+    {#{% for enq in enqueteurs %}#}
+        {#<li>{{ enq }}</li>#}
+    {#{% endfor %}#}
+    {#</ul>#}
+{#{% endblock %}#}
+{% extends 'MSBundle:WebMasterDomain:accounts.html.twig' %}
+
+{% block content %}
+    <h1>Equipe creation</h1>
+
+    <form action="{{ path('equipe_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Create</button>
+        </p>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('equipe') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+{% endblock %}

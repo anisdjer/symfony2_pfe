@@ -1,0 +1,273 @@
+{% extends "MSBundle::base_layout.html.twig" %}
+{% block title %}
+    <title>Accounts</title>
+{% endblock %}
+{% block style %}
+    <style xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+        .art-content .art-postcontent-0 .layout-item-0 { margin-bottom: 5px;  }
+        .art-content .art-postcontent-0 .layout-item-1 { color: #404040; border-spacing: 10px 0px; border-collapse: separate;  }
+        .art-content .art-postcontent-0 .layout-item-2 { color: #292929; background: #C3D3E4; padding: 10px; vertical-align: top; border-radius: 40px;  }
+        .art-content .art-postcontent-0 .layout-item-3 { border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-color:#A6A6A6;border-right-color:#A6A6A6;border-bottom-color:#A6A6A6;border-left-color:#A6A6A6; color: #292929; background: #C3D3E4; padding-top: 1px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px; vertical-align: top; border-radius: 40px;  }
+        .art-content .art-postcontent-0 .layout-item-4 { border-spacing: 10px 0px; border-collapse: separate;  }
+        .art-content .art-postcontent-0 .layout-item-5 { border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-color:#A6A6A6;border-right-color:#A6A6A6;border-bottom-color:#A6A6A6;border-left-color:#A6A6A6; color: #292929; background: #C3D3E4; padding-right: 10px;padding-left: 10px; vertical-align: top; border-radius: 40px;  }
+        .ie7 .post .layout-cell {border:none !important; padding:0 !important; }
+        .ie6 .post .layout-cell {border:none !important; padding:0 !important; }
+
+    </style>
+    <script type="text/javascript" src="{{ asset('bundles/ms/js/anis.popup.js') }}" ></script>
+    <link rel="stylesheet" href="{{ asset('bundles/ms/css/anis.popup.css') }}" />
+    <script type="text/javascript" src="{{ asset('bundles/ms/js/custom.anis.functions.js') }}" ></script>
+{% endblock %}
+{% block menu %}
+    {{ parent() }}
+    {#<br>#}
+
+
+    {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+
+    {#<li style="background-color: #a9b6b8">#}
+            {#{% if app.request.attributes.get('_route') in ["users_webmaster" , "users_webmaster_show" , "users_webmaster_edit"] %}#}
+                {#<a href="{{ path('users_webmaster')}}" class="active">#}
+            {#{% else %}#}
+                    {#<a href="{{ path('users_webmaster')}}">#}
+            {#{% endif %}#}
+                        {#Admins</a>#}
+            {#</li>#}
+        {#<li style="background-color: #a9b6b8">#}
+                {#{% if app.request.attributes.get('_route') in ["users_chefenquete" , "users_chefenquete_show" , "users_chefenquete_edit"] %}#}
+                    {#<a href="{{ path('users_chefenquete')}}" class="active">#}
+                {#{% else %}#}
+                    {#<a href="{{ path('users_chefenquete')}}" >#}
+                {#{% endif %}#}
+                    {#chef enquetes</a>#}
+                        {#</li>#}
+        {#<li style="background-color: #a9b6b8">#}
+                {#{% if app.request.attributes.get('_route') in ["users_superviseur" , "users_superviseur_show" , "users_superviseur_edit"] %}#}
+                    {#<a href="{{ path('users_superviseur')}}" class="active">#}
+                {#{% else %}#}
+                    {#<a href="{{ path('users_superviseur')}}" >#}
+                {#{% endif %}#}
+                    {#superviseurs</a>#}
+                        {#</li>#}
+        {#<li style="background-color: #a9b6b8">#}
+            {#{% if app.request.attributes.get('_route') in ["users_enqueteur" , "users_enqueteur_show" , "users_enqueteur_edit"] %}#}
+                    {#<a href="{{ path('users_enqueteur')}}" class="active">#}
+                {#{% else %}#}
+                    {#<a href="{{ path('users_enqueteur')}}" >#}
+                {#{% endif %}#}
+                {#enqueteurs</a>#}
+             {#</li>#}
+    {#{% endif %}#}
+
+{% endblock %}
+{% block content %}
+    {#{% block fos_user_content %}#}
+    {#{% if error %}#}
+    {#<div>{{ error|trans({}, 'FOSUserBundle') }}</div>#}
+    {#{% endif %}#}
+
+    {#<form action="{{ path("fos_user_security_check") }}" method="post">#}
+    {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />#}
+
+    {#<label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>#}
+    {#<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />#}
+
+    {#<label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>#}
+    {#<input type="password" id="password" name="_password" required="required" />#}
+
+    {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />#}
+    {#<label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>#}
+
+    {#<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />#}
+    {#</form>#}
+    {#{% endblock fos_user_content %}#}
+
+    {% block header %}{% endblock %}
+    {% block fos_user_content %}
+
+        <div class="art-layout-wrapper clearfix">
+            <div class="art-content-layout">
+                <div class="art-content-layout-row">
+                    <div class="art-layout-cell art-content clearfix">
+                        <article class="art-post art-article">
+
+
+                            <div class="art-postcontent art-postcontent-0 clearfix">
+                                <div class="art-content-layout-wrapper layout-item-0">
+                                    <div class="art-content-layout layout-item-1">
+                                        <div class="art-content-layout-row">
+                                            <div class="art-layout-cell layout-item-2" style="width: 50%" >
+                                                <table class="art-article" style="box-shadow: 5px 5px 1px #222;border-radius: 20px ;background-color: #E6E6E6 ;width: 100%;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="word-spacing: 4px; line-height: 150%; text-align: left; margin-top: 15px; margin-bottom: 15px; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path("users_webmaster") }}"><span style="font-weight: bold; font-size: 16px; color: rgb(13, 53, 15); text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Admins Web</span></a></td>
+                                                        <td style="width: 50%; vertical-align: middle; text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path("users_webmaster_new") }}" class="art-button"><span style="text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Nouveau Admin</span></a></td>
+                                                    </tr>
+                                                    <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+                                                    {% for wm in webmasters %}
+
+                                                    <tr style="border-radius: 20px ;background-color: #66dd66">
+                                                        <td style="text-align: center; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                            <ul>
+
+                                                                    <li style="text-align: left;">{{ wm.username }}</li>
+
+                                                            </ul>
+                                                        </td>
+                                                        <td style="width: 50%; vertical-align: middle; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                            <table class="art-article" style="border-radius: 20px ;margin-left: auto;">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; width: 50%;"><a href="{{ path('users_webmaster_show' , {'id': wm.id}) }}" class="art-button"><img width="16px" title="Voir" src="{{ asset("bundles/ms/images/voir.png") }}" /></a></td>
+                                                                    <td style="width: 68px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path('users_webmaster_edit' , {'id': wm.id}) }}" class="art-button"><img width="16px" title="Modifier" src="{{ asset("bundles/ms/images/edit.png") }}" /></a></td>
+                                                                    <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                        {% if wm.username == app.user.username %}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                        {% else %}
+                                                            <a onclick="deleteUser('{{ path('users_webmaster_delete' , { 'id' : wm.id}) }}' , this);" class="art-button"><img width="16px" title="Supprimer" src="{{ asset("bundles/ms/images/supprimer.png") }}" /></a></td>
+                                                            {% endif %}
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+
+                                                        <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div><div class="art-layout-cell layout-item-3" style="width: 50%" >
+                                            <p>         </p>
+                                            <table class="art-article" style="box-shadow: 5px 5px 1px #222;border-radius: 20px ;background-color: #E6E6E6 ;width: 100%;">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: middle; text-align: left; word-spacing: 4px; margin-top: 15px; margin-bottom: 15px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path("users_chefenquete") }}"><span style="font-weight: bold; font-size: 16px; color: rgb(13, 54, 15); text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">  Chef d'Enquetes</span></a></td>
+                                                    <td style="vertical-align: middle; width: 244px; text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path("users_chefenquete_new") }}" class="art-button"><span style="text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Nouveau Chef d'Enquete</span></a></td>
+                                                </tr>
+                                                <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+                                                {% for l in leaders %}
+
+                                                        <tr style="background-color: #66dd66">
+                                                            <td style="vertical-align: middle; text-align: center; width: 173px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                                <ul>
+                                                                    <li style="text-align: left;">{{ l.username }}</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td style="vertical-align: middle; width: 244px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                                <table class="art-article" style="margin-left: auto;">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; width: 50%;"><a href="{{ path('users_chefenquete_show' , {'id': l.id}) }}" class="art-button"><img width="16px" title="Voir" src="{{ asset("bundles/ms/images/voir.png") }}" /></a></td>
+                                                                        <td style="width: 68px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path('users_chefenquete_edit' , {'id': l.id}) }}" class="art-button"><img width="16px" title="Modifier" src="{{ asset("bundles/ms/images/edit.png") }}" /></a></td>
+                                                                        <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                    {% if l.username == app.user.username %}
+                                                        {% else %}
+                                                        <a  onclick="deleteUser('{{ path('users_chefenquete_delete' , { 'id' : l.id}) }}' , this);" class="art-button"><img width="16px" title="Supprimer" src="{{ asset("bundles/ms/images/supprimer.png") }}" /></a></td>
+                                                                        {% endif %}
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                            <br>
+                                            <p>     </p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="art-content-layout-wrapper layout-item-0">
+                                    <div class="art-content-layout layout-item-4">
+                                        <div class="art-content-layout-row">
+                                            <div class="art-layout-cell layout-item-5" style="width: 50%" >
+                                                <p>         </p>
+                                                <table class="art-article" style="box-shadow: 5px 5px 1px #222;border-radius: 20px ;background-color: #E6E6E6 ;width: 100%;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align: middle; text-align: center; word-spacing: 4px; margin-top: 15px; margin-bottom: 15px; width: 5%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path("users_superviseur") }}"><span style="font-weight: bold; font-size: 16px; color: rgb(13, 53, 15); text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Superviseurs</span></a></td>
+                                                        <td style="width: 8%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br></td>
+                                                        <td style="width: 8%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br></td>
+                                                        <td style="width: 14%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br></td>
+                                                        <td style="width: 29%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br></td>
+                                                        <td style="width: 28%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br></td>
+                                                        <td style="vertical-align: middle; text-align: right; width: 8%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path("users_superviseur_new") }}" class="art-button"><span style="text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px; ">Nouveau Superviseur</span></a></td>
+                                                    </tr>
+                                                    <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+                                                    {% for sp in supervisors %}
+                                                        <tr style="background-color: #66dd66">
+                                                            <td style="vertical-align: middle; text-align: center; width: 92%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;" colspan="6">
+                                                                <ul>
+                                                                    <li style="text-align: left;">{{ sp.username }}</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td style="vertical-align: middle; width: 8%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                                <table class="art-article">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; width: 50%;"><a href="{{ path('users_superviseur_show' , {'id': sp.id}) }}" class="art-button"><img width="16px" title="Voir" src="{{ asset("bundles/ms/images/voir.png") }}" /></a></td>
+                                                                        <td style="width: 68px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path('users_superviseur_edit' , {'id': sp.id}) }}" class="art-button"><img width="16px" title="Modifier" src="{{ asset("bundles/ms/images/edit.png") }}" /></a></td>
+                                                                        <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a onclick="deleteUser('{{ path('users_superviseur_delete' , { 'id' : sp.id}) }}' , this);" class="art-button"><img width="16px" title="Supprimer" src="{{ asset("bundles/ms/images/supprimer.png") }}" /></a></td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10"></td></tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+
+                                                <span style="border-collapse: collapse; -webkit-border-horizontal-spacing: 2px; -webkit-border-vertical-spacing: 2px;"><br></span>
+                                                <p>     </p>
+                                            </div><div class="art-layout-cell layout-item-5" style="width: 50%" >
+                                            <p>         </p>
+                                            <table class="art-article" style="box-shadow: 5px 5px 1px #222;border-radius: 20px ;background-color: #E6E6E6 ;width: 100%;">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: middle; text-align: center; word-spacing: 4px; margin-top: 15px; margin-bottom: 15px; width: 12%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path("users_enqueteur") }}"><span style="font-weight: bold; font-size: 16px; color: rgb(13, 53, 15); text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Enqueteurs</span></a></td>
+                                                    <td style="width: 47%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><br></td>
+                                                    <td style="vertical-align: middle; text-align: right; width: 41%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path("users_enqueteur_new") }}" class="art-button"><span style="text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Nouveau Enqueteur</span></a></td>
+                                                </tr>
+                                                <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+                                            {% for eq in enqueteurs %}
+                                                <tr style="background-color: #66dd66">
+                                                    <td style="vertical-align: middle; text-align: right; width: 69%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;" colspan="2">
+                                                        <ul>
+                                                            <li style="text-align: left;">{{ eq.username }}</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td style="vertical-align: middle; text-align: right; width: 31%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                        <table class="art-article" style="margin-left: auto;">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; width: 50%;"><a href="{{ path('users_enqueteur_show' , {'id': eq.id}) }}" class="art-button"><img width="16px" title="Voir" src="{{ asset("bundles/ms/images/voir.png") }}" /></a></td>
+                                                                <td style="width: 68px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path('users_enqueteur_edit' , {'id': eq.id}) }}" class="art-button"><img width="16px" title="Modifier" src="{{ asset("bundles/ms/images/edit.png") }}" /></a></td>
+                                                                <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a onclick="deleteUser('{{ path('users_enqueteur_delete' , { 'id' : eq.id}) }}' , this);" class="art-button"><img width="16px" title="Supprimer" src="{{ asset("bundles/ms/images/supprimer.png") }}" /></a></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                            <br>
+                                            <p>     </p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock fos_user_content %}
+{% endblock %}

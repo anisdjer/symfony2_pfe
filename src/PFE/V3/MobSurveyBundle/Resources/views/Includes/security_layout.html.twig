@@ -1,0 +1,14 @@
+{% block granted %}
+    {#{% include "MSBundle:Includes:granted.html.twig" %}#}
+{% endblock %}
+{% block messages %}
+    {% for key, message in app.session.getFlashes() %}
+        <div class="{{ key }}">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+    {% endfor %}
+{% endblock %}
+<div>
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+</div>

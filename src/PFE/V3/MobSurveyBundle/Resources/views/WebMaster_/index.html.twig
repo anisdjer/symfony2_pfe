@@ -1,0 +1,104 @@
+{% extends 'MSBundle:WebMasterDomain:accounts.html.twig' %}
+
+{% block content %}
+    {#<h1>WebMaster list</h1>#}
+
+    {#<table class="art-article" style="border:0;margin-left : 10% !important;box-shadow: 5px 5px 1px #222;border-radius: 20px ;background-color: #E6E6E6 ;width: 80%;">#}
+        {#<thead>#}
+            {#<tr>#}
+                {#<th>Username</th>#}
+                {#<th>Email</th>#}
+                {#<th>Password</th>#}
+                {#<th>Id</th>#}
+                {#<th>Actions</th>#}
+            {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+        {#{% for entity in entities %}#}
+            {#<tr>#}
+                {#<td><a href="{{ path('users_webmaster_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>#}
+                {#<td>{{ entity.email }}</td>#}
+                {#<td>{{ entity.password }}</td>#}
+                {#<td>{{ entity.id }}</td>#}
+                {#<td>#}
+                {#<ul>#}
+                    {#<li>#}
+                        {#<a href="{{ path('users_webmaster_show', { 'id': entity.id }) }}">show</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="{{ path('users_webmaster_edit', { 'id': entity.id }) }}">edit</a>#}
+                    {#</li>#}
+                {#</ul>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</table>#}
+
+        {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('users_webmaster_new') }}">#}
+                {#Create a new entry#}
+            {#</a>#}
+        {#</li>#}
+    {#</ul>#}
+    <div class="art-layout-wrapper clearfix">
+        <div class="art-content-layout">
+            <div class="art-content-layout-row">
+                <div class="art-layout-cell art-content clearfix">
+                    <article class="art-post art-article">
+
+
+                        <div class="art-postcontent art-postcontent-0 clearfix">
+                            <div class="art-content-layout-wrapper layout-item-0">
+                                <div class="art-content-layout layout-item-1">
+                                    <div class="art-content-layout-row">
+                                        <div class="art-layout-cell layout-item-2" style="width: 50%" >
+                                            <table class="art-article" style="box-shadow: 5px 5px 1px #222;border-radius: 20px ;background-color: #E6E6E6 ;width: 100%;">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="word-spacing: 4px; line-height: 150%; text-align: left; margin-top: 15px; margin-bottom: 15px; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><span style="font-weight: bold; font-size: 16px; color: rgb(13, 53, 15); text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Admins Web</span><br></td>
+                                                    <td style="width: 50%; vertical-align: middle; text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="" class="art-button"><span style="text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Nouveau Admin</span></a></td>
+                                                </tr>
+                                                <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+                                                {% for wm in entities %}
+                                                    {% if wm.username == app.user.username %}
+                                                    {% else %}
+                                                        <tr style="border-radius: 20px ;background-color: #66dd66">
+                                                            <td style="text-align: center; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                                <ul>
+
+                                                                    <li style="text-align: left;">{{ wm.username }}</li>
+
+                                                                </ul>
+                                                            </td>
+                                                            <td style="width: 50%; vertical-align: middle; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                                <table class="art-article" style="border-radius: 20px ;margin-left: auto;">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; width: 50%;"><a href="{{ path('users_webmaster_show' , {'id': wm.id}) }}" class="art-button"><img width="16px" title="Voir" src="{{ asset("bundles/ms/images/voir.png") }}" /></a></td>
+                                                                        <td style="width: 68px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path('users_webmaster_edit' , {'id': wm.id}) }}" class="art-button"><img width="16px" title="Modifier" src="{{ asset("bundles/ms/images/edit.png") }}" /></a></td>
+                                                                        <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path('users_webmaster_delete' , {'id': wm.id}) }}" class="art-button"><img width="16px" title="Supprimer" src="{{ asset("bundles/ms/images/supprimer.png") }}" /></a></td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

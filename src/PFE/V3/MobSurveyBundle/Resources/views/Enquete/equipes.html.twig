@@ -1,0 +1,97 @@
+{% extends 'MSBundle:Enquete:index.html.twig' %}
+{% block menu %}{% endblock %}
+{% block content %}
+    <div id="equipe_content" class="art-layout-wrapper clearfix">
+        <div class="art-content-layout">
+            <div class="art-content-layout-row">
+                <div class="art-layout-cell art-content clearfix">
+                    <article class="art-post art-article">
+
+
+                        <div class="art-postcontent art-postcontent-0 clearfix">
+                            <div class="art-content-layout-wrapper layout-item-0">
+                                <div class="art-content-layout layout-item-1">
+                                    <form method="get">
+                                    <div class="art-content-layout-row">
+                                        <div class="art-layout-cell layout-item-2" style="width: 50%" >
+                                            <table class="art-article" style="box-shadow: 5px 5px 1px #222;border-radius: 20px ;background-color: #E6E6E6 ;width: 100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="word-spacing: 4px; line-height: 150%; text-align: left; margin-top: 15px; margin-bottom: 15px; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><span style="font-weight: bold; font-size: 16px; color: rgb(13, 53, 15); text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Superviseurs</span><br></td>
+                                                        <td style="word-spacing: 4px; line-height: 150%; text-align: left; margin-top: 15px; margin-bottom: 15px; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><span style="font-weight: bold; font-size: 16px; color: rgb(13, 53, 15); text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Enqueteurs</span><br></td>
+                                                    </tr>
+                                                    <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+
+                                                    <tr style="border-radius: 20px ;background-color: #66dd66">
+                                                        <td style="text-align: center; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                            <table>
+
+                                                                {% for sp in superviseurs %}
+                                                                    <tr ><td style="border-width: 0"><input type="radio" name="superviseur" value="{{ loop.index }}" ></td><td style="border-width: 0">{{ sp }}({{ dateDebut|date('d M Y') }}--{{dateFin|date('d M Y') }})</td></tr>
+                                                                {% endfor %}
+                                                            </table>
+                                                        </td>
+                                                        <td>
+                                                            <table>
+                                                                {% for enq in enqueteurs %}
+                                                                    <tr ><td style="border-width: 0"><input type="checkbox" id="enqueteurs{{ loop.index }}" name="enqueteurs{{ loop.index }}"></td><td style="border-width: 0">{{ enq }}({{ dateDebut|date('d M Y') }}--{{dateFin|date('d M Y') }})</td></tr>
+                                                                {% endfor %}
+                                                            </table>
+                                                        </td>
+                                                    <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="art-content-layout-row">
+                                        <div class="art-layout-cell layout-item-2" style="width: 50%" >
+                                            <button class="art-button">Ajouter l'equipe</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                    <div class="art-content-layout-row" style="display: none">
+                                        <div class="art-layout-cell layout-item-3" style="width: 50%" >
+                                            <table class="art-article" style="box-shadow: 5px 5px 1px #222;border-radius: 20px ;background-color: #E6E6E6 ;width: 100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="word-spacing: 4px; line-height: 150%; text-align: left; margin-top: 15px; margin-bottom: 15px; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><span style="font-weight: bold; font-size: 16px; color: rgb(13, 53, 15); text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Superviseurs</span><br></td>
+                                                        <td style="word-spacing: 4px; line-height: 150%; text-align: left; margin-top: 15px; margin-bottom: 15px; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><span style="font-weight: bold; font-size: 16px; color: rgb(13, 53, 15); text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Enqueteurs</span><br></td>
+                                                    </tr>
+                                                    <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+
+                                                    <tr style="border-radius: 20px ;background-color: #66dd66">
+                                                        <td style="text-align: center; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                            <table>
+
+                                                                {% for sp in superviseurs %}
+                                                                    <tr ><td style="border-width: 0"><input type="radio" name="superviseur" value="{{ loop.index }}" ></td><td style="border-width: 0">{{ sp }}({{ dateDebut|date('d M Y') }}--{{dateFin|date('d M Y') }})</td></tr>
+                                                                {% endfor %}
+                                                            </table>
+                                                        </td>
+                                                        <td>
+                                                            <table>
+                                                                {% for sp in enqueteurs %}
+                                                                    <tr ><td style="border-width: 0"><input type="checkbox" name="enqueteurs" value="{{ loop.index }}" ></td><td style="border-width: 0">{{ sp }}({{ dateDebut|date('d M Y') }}--{{dateFin|date('d M Y') }})</td></tr>
+                                                                {% endfor %}
+                                                            </table>
+                                                        </td>
+                                                    <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+{% block copyright %}{% endblock %}

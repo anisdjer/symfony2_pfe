@@ -1,0 +1,28 @@
+{% extends 'MSBundle:WebMasterDomain:accounts.html.twig' %}
+
+{% block content %}
+    <h1>ChefEnquete edit</h1>
+
+    <form action="{{ path('users_chefenquete_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(forms["edit_form"]) }}>
+        <input type="hidden" name="_method" value="PUT" />
+        {{ form_widget(forms["edit_form"]) }}
+        <p>
+            <button type="submit">Edit</button>
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('users_chefenquete') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('users_chefenquete_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(forms["delete_form"]) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
