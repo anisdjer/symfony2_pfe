@@ -1,6 +1,6 @@
 {
-    "name": "anis/pfe",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "name": "anis/mobsurvey-bundle",
+    "description": "Mon Projet de PFE. MobSurvey",
     "autoload": {
         "psr-0": { "": "src/" }
     },
