@@ -178,7 +178,7 @@ class CampagneController extends Controller
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
-        if ($form->isValid()) {
+        //if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('MSBundle:Campagne')->find($id);
 
@@ -188,7 +188,7 @@ class CampagneController extends Controller
 
             $em->remove($entity);
             $em->flush();
-        }
+        //}
 
         return $this->redirect($this->generateUrl('campagne'));
     }

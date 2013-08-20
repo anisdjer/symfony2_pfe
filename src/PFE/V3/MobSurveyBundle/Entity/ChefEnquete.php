@@ -157,4 +157,6 @@ class ChefEnquete extends Mobile
     {
         return $this->geo;
     }
+
+
 }

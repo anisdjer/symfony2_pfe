@@ -22,24 +22,34 @@ class FicheReponse
     private $id;
 
 
+
     /**
-     * @ORM\ManyToOne(targetEntity="PFE\V3\MobSurveyBundle\Entity\Repondant" )
+     * @ORM\ManyToOne(targetEntity="PFE\V3\MobSurveyBundle\Entity\Repondant" , cascade={"persist"})
      * @ORM\JoinColumn(name="repondant", referencedColumnName="id", nullable=false)
      */
     private $repondant;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="PFE\V3\MobSurveyBundle\Entity\Questionnaire" )
+     * @ORM\ManyToOne(targetEntity="PFE\V3\MobSurveyBundle\Entity\Questionnaire" , cascade={"persist"})
      * @ORM\JoinColumn(name="questionnaire", referencedColumnName="id", nullable=false)
      */
     private $questionnaire;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PFE\V3\MobSurveyBundle\Entity\Enqueteur" )
+     * @ORM\ManyToOne(targetEntity="PFE\V3\MobSurveyBundle\Entity\Enqueteur"  ,cascade={"persist"})
      * @ORM\JoinColumn(name="enqueteur", referencedColumnName="id", nullable=false)
      */
     private $enqueteur;
+
+    /**
+     * @var long
+     *
+     * @ORM\Column(name="date_reponse", type="bigint")
+     */
+    private $answertime;
+
+
     /**
      * Get id
      *
@@ -118,4 +128,28 @@ class FicheReponse
     {
         return $this->enqueteur;
     }
+
+    /**
+     * Set answertime
+     *
+     * @param  $answertime
+     * @return Repondant
+     */
+    public function setAnswertime($answertime)
+    {
+        $this->answertime = $answertime;
+
+        return $this;
+    }
+
+    /**
+     * Get answertime
+     *
+     *
+     */
+    public function getAnswertime()
+    {
+        return $this->answertime;
+    }
+
 }

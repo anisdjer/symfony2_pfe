@@ -21,6 +21,9 @@ class Equipe
      */
     private $id;
 
+    private $centerX;
+    private $centerY;
+    private $raduis;
 
     /**
      * @var \DateTime
@@ -245,5 +248,35 @@ class Equipe
             $this->setDateFin(new \DateTime("now"));
 
         return $this->dateFin;
+    }
+
+    public function getCenterX()
+    {
+        return $this->centerX;
+    }
+
+    public function setCenterX($centerX)
+    {
+        $this->centerX = $centerX;
+    }
+
+    public function getCenterY()
+    {
+        return $this->centerY;
+    }
+
+    public function setCenterY($centerY)
+    {
+        $this->centerY = $centerY;
+    }
+
+    public function getRaduis()
+    {
+        return $this->raduis;
+    }
+
+    public function setRaduis($raduis)
+    {
+        $this->raduis = $raduis;
     }
 }

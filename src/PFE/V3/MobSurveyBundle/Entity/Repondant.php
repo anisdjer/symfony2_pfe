@@ -31,23 +31,30 @@ class Repondant
     /**
      * @var integer
      *
-     * @ORM\Column(name="age", type="integer")
+     * @ORM\Column(name="age", type="integer" , nullable=true)
      */
     private $age;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="region", type="string", length=255)
+     * @ORM\Column(name="region", type="string", length=255 , nullable=true)
      */
     private $region;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sexe", type="string", length=255)
+     * @ORM\Column(name="sexe", type="string", length=1)
      */
     private $sexe;
+
+    /**
+     * @var long
+     *
+     * @ORM\Column(name="date_reponse", type="bigint")
+     */
+    private $answertime;
 
     /**
      * @ORM\OneToMany(targetEntity="PFE\V3\MobSurveyBundle\Entity\FicheReponse", mappedBy="repondant")
@@ -198,5 +205,28 @@ class Repondant
     public function getFicheReponse()
     {
         return $this->ficheReponse;
+    }
+
+    /**
+     * Set answertime
+     *
+     * @param  $answertime
+     * @return Repondant
+     */
+    public function setAnswertime($answertime)
+    {
+        $this->answertime = $answertime;
+    
+        return $this;
+    }
+
+    /**
+     * Get answertime
+     *
+     *  
+     */
+    public function getAnswertime()
+    {
+        return $this->answertime;
     }
 }

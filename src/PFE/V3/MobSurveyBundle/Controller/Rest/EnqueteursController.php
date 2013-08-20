@@ -123,89 +123,6 @@ class EnqueteursController extends FOSRestController
     } // "get_enqueteur"      [GET] /enqueteurs/{slug}
 
 
-
-
-
-    public function editEnqueteurAction($slug)
-    {
-        $view = $this->view(array('Enqueteurs' => "Ok"))
-        ;
-
-        return $this->handleView($view);
-    } // "edit_enqueteur"     [GET] /enqueteurs/{slug}/edit
-
-    public function putEnqueteurAction($slug)
-    {
-        $view = $this->view(array('Enqueteurs' => "Ok"))
-        ;
-
-        return $this->handleView($view);
-    } // "put_enqueteur"      [PUT] /enqueteurs/{slug}
-
-    public function patchEnqueteurAction($slug)
-    {
-        $view = $this->view(array('Enqueteurs' => "Ok"))
-        ;
-
-        return $this->handleView($view);
-    } // "patch_enqueteur"    [PATCH] /enqueteurs/{slug}
-
-    public function lockEnqueteurAction($slug)
-    {
-        $view = $this->view(array('Enqueteurs' => "Ok"))
-        ;
-
-        return $this->handleView($view);
-    } // "lock_enqueteur"     [PATCH] /enqueteurs/{slug}/lock
-
-    public function banEnqueteurAction($slug)
-    {
-        $view = $this->view(array('Enqueteurs' => "Ok"))
-        ;
-
-        return $this->handleView($view);
-    } // "ban_enqueteur"      [PATCH] /enqueteurs/{slug}/ban
-
-
-
-
-
-    public function removeEnqueteurAction($slug)
-    {
-
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $enqueteur = $em->getRepository("MSBundle:Enqueteur")->find($slug);
-        $view = $this->view(array('enqueteurs' => $enqueteur))
-        ;
-
-        return $this->handleView($view);
-    } // "remove_enqueteur"   [GET] /enqueteurs/{slug}/remove
-
-
-
-
-
-
-
-    public function deleteEnqueteurAction($slug)
-    {
-        $view = $this->view(array('Enqueteurs' => "Ok"))
-        ;
-
-        return $this->handleView($view);
-    } // "delete_enqueteur"   [DELETE] /enqueteurs/{slug}
-
-
-
-
-
-
-
-
-
-
-
     public function getEnqueteurEnquetesAction($slug)
     {
 
@@ -221,20 +138,29 @@ class EnqueteursController extends FOSRestController
             //$enquetes_id[] = array("id" => 0, "titre" => $enqueteur->getDevice(),"questionnaire" => array());
 
             $equipes = $enqueteur->getEquipes();
+            $enquetesList = array();
             foreach($equipes as $eq){
-                $enquetes = $eq->getEnquetes();
-                foreach($enquetes as $enq){
-                    $questionnaire = $enq->getQuestionnaires();
-                    $questionnaires= new \Doctrine\Common\Collections\ArrayCollection();
-
-                    foreach($questionnaire as $qest){
-                        $questionnaires[] = array("id" => $qest->getId(), "titre" => $qest->getTitre(),"date_creation" => $qest->getDateCreation()->getTimestamp() , "premiereQuestion" => ($qest->getPremiereQuestion() == null)? 0 : $qest->getPremiereQuestion()->getId());
-                    }
-
-                    $enquetes_id[] = array("id" => $enq->getId(), "titre" => $enq->getTitre(), "questionnaire" => $questionnaires);
-
+                foreach($eq->getEnquetes() as $enqu)
+                {
+                    if(! key_exists($enqu->getId() , $enquetesList))
+                        $enquetesList[$enqu->getId()] = $enqu;
                 }
             }
+
+
+            foreach($enquetesList as $enq){
+
+                $questionnaire = $enq->getQuestionnaires();
+                $questionnaires= new \Doctrine\Common\Collections\ArrayCollection();
+
+                foreach($questionnaire as $qest){
+                    $questionnaires[] = array("id" => $qest->getId(), "titre" => $qest->getTitre(),"date_creation" => $qest->getDateCreation()->getTimestamp() , "premiereQuestion" => ($qest->getPremiereQuestion() == null)? 0 : $qest->getPremiereQuestion()->getId());
+                }
+
+                $enquetes_id[] = array("id" => $enq->getId(), "titre" => $enq->getTitre(), "questionnaire" => $questionnaires);
+
+            }
+
 
 //            $enquetes[0]=array("dd" => "ee");
             $view = $this->view($enquetes_id , 200);
@@ -283,51 +209,90 @@ class EnqueteursController extends FOSRestController
         return $this->handleView( $view );
     }// "get_enqueteur_enquetes"    [GET] /enqueteurs/{slug}/equipes
 
-
-
-
-
-
-    public function newEnqueteurEnquetesAction($slug)
-    {} // "new_enqueteur_enquetes"    [GET] /enqueteurs/{slug}/enquetes/new
-
-    public function postEnqueteurEnquetesAction($slug)
+    public function postEnqueteurFichesAction($enqueteur_id)
     {
+        try{
+            $j = json_decode($this->getRequest()->getContent());
 
-        echo $slug;die();
+            $respondent = new \PFE\V3\MobSurveyBundle\Entity\Repondant();
 
-    } // "post_enqueteur_enquetes"   [POST] /enqueteurs/{slug}/enquetes
-
-    public function getEnqueteurEnqueteAction($slug, $id)
-    {} // "get_enqueteur_enquete"     [GET] /enqueteurs/{slug}/enquetes/{id}
-
-    public function editEnqueteurEnqueteAction($slug, $id)
-    {} // "edit_enqueteur_enquete"    [GET] /enqueteurs/{slug}/enquetes/{id}/edit
-
-    public function putEnqueteurEnqueteAction($slug, $id)
-    {} // "put_enqueteur_enquete"     [PUT] /enqueteurs/{slug}/enquetes/{id}
-
-    public function postEnqueteurEnqueteVoteAction($slug, $id)
-    {} // "post_enqueteur_enquete_vote" [POST] /enqueteurs/{slug}/enquetes/{id}/vote
-
-    public function removeEnqueteurEnqueteAction($slug, $id)
-    {} // "remove_enqueteur_enquete"  [GET] /enqueteurs/{slug}/enquetes/{id}/remove
-
-    public function deleteEnqueteurEnqueteAction($slug, $id)
-    {} // "delete_enqueteur_enquete"  [DELETE] /enqueteurs/{slug}/enquetes/{id}
+            $respondent->setNom($j->name.' '.$j->last_name);
+            $respondent->setAge($j->age);
+            $respondent->setSexe($j->genre);
+            $respondent->setAnswertime($j->answered);
 
 
 
 
+            $em = $this->getDoctrine()->getEntityManager();
+            $resp = $em->getRepository("MSBundle:Repondant")->findOneByAnswertime($respondent->getAnswertime());
+            if($resp == null){
+                $em->persist($respondent);
+
+            }
+            else
+            {
+                $respondent = $resp;
+            }
+
+            // TODO : les fiches
+
+            $fiche = $j->fiche;
+            $Fiche = new \PFE\V3\MobSurveyBundle\Entity\FicheReponse();
+            $Fiche->setQuestionnaire($em->getRepository("MSBundle:Questionnaire")->findOneById($fiche->questionnaire));
+            $Fiche->setEnqueteur($em->getRepository("MSBundle:Enqueteur")->findOneById($fiche->enqueteur));
+            $Fiche->setRepondant($respondent);
+            $Fiche->setAnswertime($fiche->answered);
+
+            $em->persist($Fiche);
+
+            foreach($fiche->reponses as $rep)
+            {
+                $reponse = new \PFE\V3\MobSurveyBundle\Entity\Reponse();
+                $reponse->setQuestion($em->getRepository("MSBundle:Question")->findOneById($rep->question));
+                $reponse->setFicheReponse($Fiche);
+                if($reponse->getQuestion()->getQType() == "texte")
+                {
+                    $reponse->setValeur($rep->valeur);
+                }
+                else
+                {
+                    $reponse->setValeur(""); // valeur can not be null | modifier l'entité réponse
+                    $choices = new \Doctrine\Common\Collections\ArrayCollection();
+                    foreach($rep->choix as $choix)
+                    {
+                        $Choix = $em->getRepository("MSBundle:Choix")->findOneById($choix);
+                        $reponse->addChoix($Choix);
+                        $Choix->addReponse($reponse);
+                        $em->persist($Choix);
+                    }
+                }
+
+
+                $em->persist($reponse);
+            }
 
 
 
+            $em->flush();
+            die();
+        }catch (\Symfony\Component\Config\Definition\Exception\Exception $e){}
+    }
 
 
+    // A supprimer : juste pour un test
+//    public  function getRespondentsAction()
+//    {
+//        $em = $this->getDoctrine()->getEntityManager();
+//        $respondents = $em->getRepository("MSBundle:Repondant")->findAll();
+//        $data [] = array();
+//        foreach($respondents as $resp)
+//        {
+//            $data[] = array("sexe" => $resp->getSexe(), "age" => $resp->getAge());
+//        }
+//        $view = $this->view($data , 200);
+//
+//        return $this->handleView( $view );
+//    }
 
-    public function linkEnqueteurAction($slug)
-    {} // "link_enqueteur_friend"     [LINK] /enqueteurs/{slug}
-
-    public function unlinkEnqueteurAction($slug)
-    {} // "link_enqueteur_friend"     [UNLINK] /enqueteurs/{slug}
 }

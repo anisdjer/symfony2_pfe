@@ -43,7 +43,8 @@
                     <a href="{{ path('ms_homepage')}}">
             {% endif %}
                         Accueil</a>
-            </li><li>
+            </li>
+                <li>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {% if app.request.attributes.get('_route') in [ "campagne" , "campagne_new" , "campagne_edit" , "campagne_show"] %}
                     <a href="{{ path('campagne')}}" class="active">
@@ -59,6 +60,14 @@
                     <a href="{{ path('enquete')}}" >
                 {% endif %}
                     enquetes</a>
+                        </li>
+            <li>
+                {% if app.request.attributes.get('_route') in [ "questionnaire" , "questionnaire_new" , "questionnaire_edit" , "questionnaire_show"] %}
+                    <a href="{{ path('questionnaire')}}" class="active">
+                {% else %}
+                    <a href="{{ path('questionnaire')}}" >
+                {% endif %}
+                        questionnaire</a>
                         </li>
             <li>
                 {% if app.request.attributes.get('_route') in [ "equipe" , "equipe_new" , "equipe_edit" , "equipe_show"] %}
@@ -82,7 +91,7 @@
                 {% else %}
                     <a href="{{ path('fos_user_security_logout')}}" >
                 {% endif %}
-                Logout ({{ app.user.username }})</a>
+                Logout</a>
 
             {% else %}
                 {% if app.request.attributes.get('_route') == "ms_login" %}

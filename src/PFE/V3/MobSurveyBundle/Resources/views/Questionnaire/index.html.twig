@@ -1,3 +1,5 @@
+
+{#
 {% extends '::base.html.twig' %}
 
 {% block body -%}
@@ -41,3 +43,92 @@
         </li>
     </ul>
     {% endblock %}
+#}
+{% extends 'MSBundle:WebMasterDomain:accounts.html.twig' %}
+{% block title %}
+    <title>Questionnaires</title>
+{% endblock %}
+{% block style %}
+    <style xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+        .art-content .art-postcontent-0 .layout-item-0 { margin-bottom: 5px;  }
+        .art-content .art-postcontent-0 .layout-item-1 { color: #404040; border-spacing: 10px 0px; border-collapse: separate;  }
+        .art-content .art-postcontent-0 .layout-item-2 { color: #292929; background: #C3D3E4; padding: 10px; vertical-align: top; border-radius: 40px;  }
+        .art-content .art-postcontent-0 .layout-item-3 { border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-color:#A6A6A6;border-right-color:#A6A6A6;border-bottom-color:#A6A6A6;border-left-color:#A6A6A6; color: #292929; background: #C3D3E4; padding-top: 1px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px; vertical-align: top; border-radius: 40px;  }
+        .art-content .art-postcontent-0 .layout-item-4 { border-spacing: 10px 0px; border-collapse: separate;  }
+        .art-content .art-postcontent-0 .layout-item-5 { border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-color:#A6A6A6;border-right-color:#A6A6A6;border-bottom-color:#A6A6A6;border-left-color:#A6A6A6; color: #292929; background: #C3D3E4; padding-right: 10px;padding-left: 10px; vertical-align: top; border-radius: 40px;  }
+        .ie7 .post .layout-cell {border:none !important; padding:0 !important; }
+        .ie6 .post .layout-cell {border:none !important; padding:0 !important; }
+
+    </style>
+    <script type="text/javascript" src="{{ asset('bundles/ms/js/anis.popup.js') }}" ></script>
+    <link rel="stylesheet" href="{{ asset('bundles/ms/css/anis.popup.css') }}" />
+    <script type="text/javascript" src="{{ asset('bundles/ms/js/custom.anis.functions.js') }}" ></script>
+{% endblock %}
+{% block fos_user_content %}
+    <h1> </h1>
+
+    <div class="art-layout-wrapper clearfix">
+        <div class="art-content-layout">
+            <div class="art-content-layout-row">
+                <div class="art-layout-cell art-content clearfix">
+                    <article class="art-post art-article">
+
+
+                        <div class="art-postcontent art-postcontent-0 clearfix">
+                            <div class="art-content-layout-wrapper layout-item-0">
+                                <div class="art-content-layout layout-item-1">
+                                    <div class="art-content-layout-row">
+                                        <div class="art-layout-cell layout-item-2" style="width: 50%" >
+                                            <table class="art-article" style="box-shadow: 5px 5px 1px #222;border-radius: 20px ;background-color: #E6E6E6 ;width: 100%;">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="word-spacing: 4px; line-height: 150%; text-align: left; margin-top: 15px; margin-bottom: 15px; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><span style="font-weight: bold; font-size: 16px; color: rgb(13, 53, 15); text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Questionnaires</span><br></td>
+                                                    <th style="width: 15%">Enquête</th>
+                                                    <td style="width: 50%; vertical-align: middle; text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path("questionnaire_new") }}" class="art-button"><span style="text-shadow: rgba(23, 23, 23, 0.496094) 0px -1px 0px;">Nouvelle Questionnaire</span></a></td>
+                                                </tr>
+                                                <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+                                                {% for entity in entities %}
+
+                                                    <tr style="border-radius: 20px ;background-color: #66dd66">
+                                                        <td style="text-align: center; vertical-align: middle; width: 50%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                            <ul>
+
+                                                                <li style="text-align: left;">{{ entity.titre }}{% if entity.dateCreation %} ( Cr&eacute&eacute le : {{ entity.dateCreation|date('Y-m-d') }}){% endif %}</li>
+
+                                                            </ul>
+                                                        </td>
+                                                        <td>
+                                                            <ul>
+                                                                <li>{{ entity.enquete }}</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td style="width: 50%; vertical-align: middle; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
+                                                            <table class="art-article" style="border-radius: 20px ;margin-left: auto;">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; width: 50%;"><a href="{{ path('questionnaire_show' , {'id': entity.id}) }}" class="art-button"><img width="16px" title="Voir" src="{{ asset("bundles/ms/images/voir.png") }}" /></a></td>
+                                                                    <td style="width: 68px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a href="{{ path('questionnaire_edit' , {'id': entity.id}) }}" class="art-button"><img width="16px" title="Modifier" src="{{ asset("bundles/ms/images/edit.png") }}" /></a></td>
+                                                                    <td style="text-align: right; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"><a onclick="deleteUser('{{ path('questionnaire_delete' , { 'id' : entity.id}) }}' , this);" class="art-button"><img width="16px" title="Supprimer" src="{{ asset("bundles/ms/images/supprimer.png") }}" /></a></td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr style="height: 0px !important; max-height: 2px !important;background-color: #636363"><td colspan="10" ></td></tr>
+
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

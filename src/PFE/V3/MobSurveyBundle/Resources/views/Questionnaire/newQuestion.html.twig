@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+ 
+
+</head>
+<body>
+<div id="newQuestionForm">
+    <script type="text/javascript">
+
+        function checkBoxObligatoire(obligatoire){
+            if(obligatoire.value == 0){
+                obligatoire.value =1;
+            }
+            else{
+                obligatoire.value =0;
+            }
+        }
+		 function affChoix(typeQuestion){
+            var choix = document.getElementById('choix');
+			if(typeQuestion.value == 'texte')
+			{
+				choix.style.visibility = 'hidden';
+				var choixNum = document.getElementById('nbreChoices');
+				choixNum.value = 0;
+				$('.choi').remove();
+			}
+			else choix.style.visibility = 'visible';
+        }
+        function validateForm()
+        {
+            FormSubmit(document.forms["myform"]);
+        }
+		
+    </script>
+
+
+    <form name="myform" method="get" onsubmit="return FormSubmit(this);">
+        <table border="0">
+            <tr>
+        <th style="">
+			<label>Titre : </label>
+		</th>
+		<td>
+			<textarea  name="titre" style="width:400px;max-width: 400px;max-height: 200px; padding-left: 10px;padding-top: 10px; padding-right: 10px;text-align: justify" cols="20" rows="20" required></textarea><!--<input type="text" name="titre" required="true"/></p>-->
+			</td>
+		</tr>
+        <tr>
+            <td>
+                <label>Obligatoire</label>
+            </td>
+            <td>
+                <input name="obligatoire" type="checkbox" value="0" onclick="checkBoxObligatoire(this);"/>
+            <td>
+        </tr>
+		<tr>
+			<td>
+				<label>Type Question</label>
+			</td>
+			<td>
+				<select name="typeQuestion" onchange="affChoix(this);">
+					<option value="texte" >Texte</option>
+					<option value="multi_choices" >Choix Multiple</option>
+					<option value="choix_unique" >Choix Unique</option>
+				</select>
+			<td>
+		</tr>
+        <tr id="choix" style="visibility: hidden">
+			<th>
+				<label>Nombre de choix :</label>
+			</th>
+			<td>
+				<input type="number" id="nbreChoices" name="nbreChoices" onchange="CreateChoices(this);" value="0">
+			</td>
+		</tr>
+        <tr>
+            <td></td>
+            <td id="listeChoix"></td>
+        </tr>
+
+        <tr>
+			<td></td>
+			<td><td>
+		</tr>
+        </table>
+    </form>
+    <table>
+        <tr>
+            <td><button onclick="validateForm();">Validate </button></td>
+            <td><button onclick="closeForm();" value="Close">Fermer</button> <td>
+        </tr>
+    </table>
+
+</div>
+
+
+</body>
+</html>

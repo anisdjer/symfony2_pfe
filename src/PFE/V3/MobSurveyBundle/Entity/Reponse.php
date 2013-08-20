@@ -146,6 +146,16 @@ class Reponse
     }
 
     /**
+     * Get choix
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function setChoix(\Doctrine\Common\Collections\Collection $choices)
+    {
+        $this->choix = $choices;
+    }
+
+    /**
      * Set ficheReponse
      *
      * @param \PFE\V3\MobSurveyBundle\Entity\FicheReponse $ficheReponse

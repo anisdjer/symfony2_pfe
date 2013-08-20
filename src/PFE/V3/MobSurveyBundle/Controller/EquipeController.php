@@ -186,7 +186,7 @@ class EquipeController extends Controller
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
-        if ($form->isValid()) {
+        //if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('MSBundle:Equipe')->find($id);
 
@@ -196,7 +196,7 @@ class EquipeController extends Controller
 
             $em->remove($entity);
             $em->flush();
-        }
+        //}
 
         return $this->redirect($this->generateUrl('equipe'));
     }

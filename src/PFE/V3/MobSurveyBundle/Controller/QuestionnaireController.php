@@ -34,6 +34,32 @@ class QuestionnaireController extends Controller
             'entities' => $entities,
         );
     }
+    /**
+     *
+     * @Route("/design/{id}", name="questionnaire_design")
+     * @Method("GET")
+     * @Template()
+     */
+    public function designAction($id)
+    {
+
+        return array(
+            'questionnaire' => $id,
+        );
+
+    }
+    /**
+     *
+     * @Route("/newQuestion.html}", name="questionnaire_question_new")
+     * @Method("GET")
+     * @Template("MSBundle:Questionnaire:newQuestion.html.twig")
+     */
+    public function newQuestionAction()
+    {
+        return array(
+        );
+    }
+
 
     /**
      * Creates a new Questionnaire entity.
@@ -53,6 +79,8 @@ class QuestionnaireController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            return $this->redirect($this->generateUrl('questionnaire_design', array('id' => $entity->getId())));
+            return $this->redirect("http://localhost/Drag&DropQuestionnaire/test.php?id=".$entity->getId());
             return $this->redirect($this->generateUrl('questionnaire_show', array('id' => $entity->getId())));
         }
 
@@ -178,9 +206,11 @@ class QuestionnaireController extends Controller
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
-        if ($form->isValid()) {
+        //if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('MSBundle:Questionnaire')->find($id);
+            $entity->setPremiereQuestion(null);
+            $em->flush();
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Questionnaire entity.');
@@ -188,7 +218,7 @@ class QuestionnaireController extends Controller
 
             $em->remove($entity);
             $em->flush();
-        }
+        //}
 
         return $this->redirect($this->generateUrl('questionnaire'));
     }

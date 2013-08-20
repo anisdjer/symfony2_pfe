@@ -25,7 +25,6 @@ abstract class Mobile extends Utilisateur
     protected $device_id;
 
     /**
-     * @var integer
      *
      * @ORM\OneToMany(targetEntity="PFE\V3\MobSurveyBundle\Entity\GeoLocalisation", orphanRemoval=true, mappedBy="user")
      */
@@ -40,6 +39,7 @@ abstract class Mobile extends Utilisateur
         $this->device_id = $device;
     }
 
+
     public function serialize(){
         return array(
             "id" => $this->getId(),
@@ -51,7 +51,7 @@ abstract class Mobile extends Utilisateur
     function notify($message)
     {
         try{
-            $GOOGLE_API_KEY = "AIzaSyA4WpG8L-juwKEOTpdprFkKo5HCuKsQnTY";
+            $GOOGLE_API_KEY = "AIzaSyDfv7_L3qeGpjbDp5l2FS53zIYTl0q6zug";
             $GOOGLE_GCM_URL = "https://android.googleapis.com/gcm/send";
             $fields = array(
                 'registration_ids'  => array($this->device_id),

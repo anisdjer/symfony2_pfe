@@ -1,0 +1,185 @@
+<?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: Anis
+ * Date: 21/06/13
+ * Time: 03:48
+ * To change this template use File | Settings | File Templates.
+ */
+?>
+
+<html>
+<head>
+    <title>Statistics</title>
+</head>
+<body>
+
+<script type="text/javascript" src="{{ asset('bundles/ms/js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/ms/js/flot/jquery.flot.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/ms/js/flot/jquery.flot.pie.min.js') }}"></script>
+<script>
+
+//    var dataSetGenre = [
+//        {label: "Male", data: 0, color: "#005CDE" },
+//        {label: "Female", data: 0, color: "#DE000F" },
+//        {data: 1, color: "#E6E6E6" }
+//    ];
+//    var dataSetAge= [
+//        {data: 1, color: "#E6E6E6" }
+//    ];
+//    var optionsGenre = {
+//        series: {
+//            pie: {
+//                show: true,
+//                innerRadius: 0.5,
+//                label: {
+//                    show: true
+//                }
+//            }
+//        }
+//    };
+//    var optionsAge = {
+//        series: {
+//            pie: {
+//                show: true,
+//                radius : 0.8,
+//                innerRadius: 0.5,
+//                label: {
+//                    show: true
+//                }
+//            }
+//        }
+//    };
+//
+//    var m = 0;
+//    var f = 0;
+//    var empty = 1;
+//    function GetData()
+//    {
+        /*$.getJSON('{{ path('get_respondents') }}', function(data) {
+     m =0;
+     f=0;
+     var ages = Array();
+     $.each(data, function(key, val) {
+     if(val.sexe == 'M')m ++;
+     if(val.sexe == 'F')f++;
+
+     if(isNaN(ages[val.age]))ages[val.age]= 1;
+     else ages[val.age]++;
+     //console.log(ages[val.age]);
+     });
+
+     var dataSet = [];
+     var i =0;
+     ages.forEach(function (x,y){
+     dataSet.push({label : y, data : x})
+     });
+     if(m>0 || f >0)empty=0;
+     else empty =1;
+
+     dataSetGenre = [
+     {label: "Male", data: m, color: "#005CDE" },
+     {label: "Female", data: f, color: "#DE000F" },
+     { data: empty, color: "#E6E6E6" }
+     ];
+
+     $.plot($("#flot-placeholder1"), dataSetGenre, optionsGenre);
+     $.plot($("#flot-placeholder2"), dataSet, optionsAge);
+     });
+
+
+     {#setTimeout(GetData, 3000);*/#}
+
+        {#$.ajax({#}
+            {#type: "GET",#}
+            {#url: "{{ path('get_respondents') }}",#}
+
+            {#async: true, /* If set to non-async, browser shows page as "Loading.."*/#}
+            {#cache: false,#}
+            {#timeout:50000, /* Timeout in ms */#}
+
+            {#success: function(data){#}
+                {#m =0;#}
+                {#f=0;#}
+                {#var ages = Array();#}
+                {#$.each(data, function(key, val) {#}
+                    {#if(val.sexe == 'M') m ++;#}
+                    {#if(val.sexe == 'F') f++;#}
+
+                    {#if(isNaN(ages[val.age]))ages[val.age]= 1;#}
+                    {#else ages[val.age]++;#}
+                    {#//console.log(ages[val.age]);#}
+                {#});#}
+
+                {#var dataSet = [];#}
+                {#var i =0;#}
+                {#ages.forEach(function (x,y){#}
+                    {#dataSet.push({label : y, data : x})#}
+                {#});#}
+                {#if(m>0 || f >0)empty=0;#}
+                {#else empty =1;#}
+
+                {#dataSetGenre = [#}
+                    {#{label: "Male", data: m, color: "#005CDE" },#}
+                    {#{label: "Female", data: f, color: "#DE000F" },#}
+                    {#{ data: empty, color: "#E6E6E6" }#}
+                {#];#}
+
+
+                {#$.plot($("#flot-placeholder1"), dataSetGenre, optionsGenre);#}
+                {#$.plot($("#flot-placeholder2"), dataSet, optionsAge);#}
+                {#$("#total").text(m+f);#}
+                {#setTimeout(GetData, 3000);#}
+            {#},#}
+            {#error: function(XMLHttpRequest, textStatus, errorThrown){#}
+                {#setTimeout(GetData, 3000);#}
+            {#}#}
+        {#});#}
+    {#}#}
+
+    {#$(document).ready(function () {#}
+
+
+        {#$.plot($("#flot-placeholder1"), dataSetGenre, optionsGenre);#}
+        {#$.plot($("#flot-placeholder2"), dataSetAge, optionsAge);#}
+        {#GetData();#}
+    {#});#}
+
+
+
+
+
+</script>
+<table border="1" style="width: 100%;height: 100px;max-height: 100px">
+    <tr>
+        <th style="text-align: center;background-color: #AAAAAA;height: 50px;font-size: 20pt" colspan="10">
+            {{ titre }}
+        </th>
+    </tr>
+{% for question in questions %}
+    <tr>
+        <td>
+            {{ question.texte }}
+        </td>
+        <td>
+            <ul>
+                {% for choix in question.choix %}
+
+                    <li>
+                        {{ choix.valeur }}({{ choix.reponse|length }})
+
+                    </li>
+
+                {% endfor %}
+            </ul>
+        </td>
+        <td>
+
+        </td>
+    </tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
